@@ -1,2 +1,2 @@
 # mortgage-calc-demo
- Practising Page Objects model with Selenium Java, Maven and JUnit5
+ Practicing Page Object model with Selenium Java, Maven and JUnit5
