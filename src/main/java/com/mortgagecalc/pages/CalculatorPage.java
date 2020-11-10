@@ -52,8 +52,8 @@ public class CalculatorPage extends BasePage {
 		switch (reportAmortizationRate) {
 		case "Annually":
 			click(reportAmortizationRadioButtonAnnually);
-		break;
-	case "Monthly":
+			break;
+		case "Monthly":
 			click(reportAmortizationRadioButtonMonthly);
 		break;
 		default:
