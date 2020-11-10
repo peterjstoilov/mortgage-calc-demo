@@ -27,7 +27,7 @@ public class MortgageTest extends BaseTest {
 		/*
 		 * Test Scenario 1:
 		 */
-		// Using the �Mortgage Payment Calculator� and given input values as follows:
+		// Using the Mortgage Payment Calculator and given input values as follows:
 		// Loan Amount: $200,000
 		// Term in years: 30 years
 		// Interest rate: 5 %
@@ -41,7 +41,7 @@ public class MortgageTest extends BaseTest {
 		/*
 		 * Test Scenario 2 (*NOT PART OF ASSIGNMENT*):
 		 */
-		// Using the �Mortgage Payment Calculator� and given input values as follows:
+		// Using the Mortgage Payment Calculator and given input values as follows:
 		// Loan Amount: $200,000
 		// Term in years: 30 years
 		// Interest rate: 5 %
