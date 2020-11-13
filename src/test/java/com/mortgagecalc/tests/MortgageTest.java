@@ -10,11 +10,31 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 public class MortgageTest extends BaseTest {
 
+	/*
+	 * Test Scenario 1:
+	 */
+	// Using the Mortgage Payment Calculator and given input values as follows:
+	// Loan Amount: $200,000
+	// Term in years: 30 years
+	// Interest rate: 5 %
+	// Report_Amortization: Annually
+
+	// Verify the following data on the results page:
+	// Monthly Payment: $1,073.64
+	// Total Payments: $386,513
+	// Total Interest: $186,513
+
 	// Set parameters for the test here:
 	private static Stream<Arguments> parameterProvider() {
 		return Stream.of(
 				Arguments.of(200000, "30", 5, "Annually", "$1,073.64", "Total Payments $386,513", "Total Interest $186,513"),
-				Arguments.of(200000, "30", 5, "Monthly", "$1,073.64", "Total Payments $386,513", "Total Interest $186,513"));
+				Arguments.of(200000, "30", 5, "Monthly", "$1,073.64", "Total Payments $386,513", "Total Interest $186,513"),
+				Arguments.of(250000000, "15", 7, "Annually", "$2,247,070.68", "Total Payments $404,472,721",
+						"Total Interest $154,472,721"),
+				Arguments.of(0, "40", 1, "Monthly", "$0.00", "Total Payments $0", "Total Interest $0"),
+				Arguments.of(249999999, "1", 25, "Annually", "$23,761,050.72", "Total Payments $285,132,609",
+						"Total Interest $35,132,610"),
+				Arguments.of(1, "35", 0, "Monthly", "$0.00", "Total Payments $1", "Total Interest $0"));
 	}
 
 	// @Test
@@ -23,35 +43,6 @@ public class MortgageTest extends BaseTest {
 	@MethodSource("parameterProvider")
 	public void calculateMortgageLoanPayments(int loanAmount, String termInYears, int interestRate,
 			String reportAmortization, String monthlyPayment, String totalPayments, String totalInterest) {
-
-		/*
-		 * Test Scenario 1:
-		 */
-		// Using the Mortgage Payment Calculator and given input values as follows:
-		// Loan Amount: $200,000
-		// Term in years: 30 years
-		// Interest rate: 5 %
-		// Report_Amortization: Annually
-
-		// Verify the following data on the results page:
-		// Monthly Payment: $1,073.64
-		// Total Payments: $386,513
-		// Total Interest: $186,513
-
-		/*
-		 * Test Scenario 2 (*NOT PART OF ASSIGNMENT*):
-		 */
-		// Using the Mortgage Payment Calculator and given input values as follows:
-		// Loan Amount: $200,000
-		// Term in years: 30 years
-		// Interest rate: 5 %
-		// Report_Amortization: Monthly
-
-		// Verify the following data on the results page:
-		// Monthly Payment: $1,073.64
-		// Total Payments: $386,513
-		// Total Interest: $186,513
-
 
 		// Pre-condition (not part of test assignment): close pop up message
 		calculatorPage.closePopUpMessage();
