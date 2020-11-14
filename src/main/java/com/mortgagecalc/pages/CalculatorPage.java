@@ -44,7 +44,7 @@ public class CalculatorPage extends BasePage {
 		selectByValue(termInYears, termInYearsSelect);
 	}
 
-	public void setInterestRate(int interestRate) {
+	public void setInterestRate(float interestRate) {
 		type(String.valueOf(interestRate), interestRateFieldYear);
 	}
 
