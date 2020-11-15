@@ -27,18 +27,15 @@ public class MortgageTest extends BaseTest {
 	// Set parameters for the test here:
 	private static Stream<Arguments> parameterProvider() {
 		return Stream.of(
-				Arguments.of(200000, "30", 5, "Annually", "$1,073.64", "Total Payments $386,513", "Total Interest $186,513"), // TC #1
-				Arguments.of(200000, "30", 5, "Monthly", "$1,073.64", "Total Payments $386,513", "Total Interest $186,513"),
-				Arguments.of(250000000, "15", 7, "Annually", "$2,247,070.68", "Total Payments $404,472,721",
-						"Total Interest $154,472,721"),
-				Arguments.of(0, "40", 1, "Monthly", "$0.00", "Total Payments $0", "Total Interest $0"),
-				Arguments.of(249999999, "1", 25, "Annually", "$23,761,050.72", "Total Payments $285,132,609",
-						"Total Interest $35,132,610"),
-				Arguments.of(1, "35", 0, "Monthly", "$0.00", "Total Payments $1", "Total Interest $0"),
-				Arguments.of(123000000, "25", 0.001f, "Monthly", "$410,051.42", "Total Payments $123,015,427",
-						"Total Interest $15,427"),
-				Arguments.of(1500, "20", 24.999f, "Annually", "$31.47", "Total Payments $7,563", "Total Interest $6,063"),
-				Arguments.of(50000, "15", 5.87f, "Monthly", "$418.42", "Total Payments $75,317", "Total Interest $25,317"));
+				Arguments.of(200000, "30", 5, "Annually", 1073.64f, 386513, 186513), // TC1
+				Arguments.of(200000, "30", 5, "Monthly", 1073.64f, 386513f, 186513f),
+				Arguments.of(250000000, "15", 7, "Annually", 2247070.68f, 404472721f, 154472721f),
+				Arguments.of(0, "40", 1, "Monthly", 0.00f, 0f, 0f),
+				Arguments.of(249999999, "1", 25, "Annually", 23761050.72f, 285132609f, 35132610f),
+				Arguments.of(1, "35", 0, "Monthly", 0.00f, 1f, 0f),
+				Arguments.of(123000000, "25", 0.001f, "Monthly", 410051.42f, 123015427f, 15427f),
+				Arguments.of(1500, "20", 24.999f, "Annually", 31.47f, 7563f, 6063f),
+				Arguments.of(50000, "15", 5.87f, "Monthly", 418.42f, 75317f, 25317f));
 	}
 
 	// @Test
@@ -46,7 +43,7 @@ public class MortgageTest extends BaseTest {
 	@ParameterizedTest
 	@MethodSource("parameterProvider")
 	public void calculateMortgageLoanPayments(int loanAmount, String termInYears, float interestRate,
-			String reportAmortization, String monthlyPayment, String totalPayments, String totalInterest) {
+			String reportAmortization, float monthlyPayment, float totalPayments, float totalInterest) {
 
 		// Pre-condition (not part of test assignment): close pop up message
 		calculatorPage.closePopUpMessage();
@@ -58,9 +55,9 @@ public class MortgageTest extends BaseTest {
 		calculatorPage.setReportAmortizationRate(reportAmortization);
 
 		// Expected Results (Assertions):
-		Assertions.assertTrue(calculatorPage.getMonthlyPaymentValue().equals(monthlyPayment));
-		Assertions.assertTrue(calculatorPage.getTotalPaymentsValue().equals(totalPayments));
-		Assertions.assertTrue(calculatorPage.getTotalInterestValue().equals(totalInterest));
+		Assertions.assertEquals(calculatorPage.getMonthlyPaymentValue(), monthlyPayment);
+		Assertions.assertEquals(calculatorPage.getTotalPaymentsValue(), totalPayments);
+		Assertions.assertEquals(calculatorPage.getTotalInterestValue(), totalInterest);
 	}
 }
 

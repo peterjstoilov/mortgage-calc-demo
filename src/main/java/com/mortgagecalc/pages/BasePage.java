@@ -1,10 +1,14 @@
 package com.mortgagecalc.pages;
 
+import java.util.regex.Pattern;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 // objects will not be created from this class, hence it is abstract
 // all other pages will be able to inherit the base page variables and methods
@@ -58,6 +62,19 @@ public abstract class BasePage {
 		} catch (NoSuchElementException e) {
 			return false;
 		}
+	}
+
+	protected float convertStringToFloat(String inputString) {
+		// convert e.g "total $20,921.24" => 20921.24 (ready for float parse)
+		float outputFloat = Float
+				.parseFloat(inputString.replaceAll("[a-zA-Z $,]", ""));
+		return outputFloat;
+	}
+
+	protected void waitForCalculation(By locator) {
+		WebDriverWait wait = new WebDriverWait(driver, 20);
+		Pattern pattern = Pattern.compile("\\d"); // looking for any digits
+		wait.until(ExpectedConditions.textMatches(locator, pattern)); // waits until string contains a digit
 	}
 
 }

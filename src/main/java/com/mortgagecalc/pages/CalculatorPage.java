@@ -1,7 +1,5 @@
 package com.mortgagecalc.pages;
 
-import java.util.regex.Pattern;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -63,36 +61,44 @@ public class CalculatorPage extends BasePage {
 	}
 
 	// Getter methods:
-	public String getMonthlyPaymentValue() {
+	public float getMonthlyPaymentValue() {
 		// wait for the field to load the text value and then extract text
-		WebDriverWait wait = new WebDriverWait(driver, 20);
-		Pattern pattern = Pattern.compile("\\d"); // looking for any digits
-		wait.until(ExpectedConditions.textMatches(monthlyPaymentValue, pattern)); // waits until string contains a digit
+		waitForCalculation(monthlyPaymentValue);
+
+		// extract value (string) and convert it to float
 		String monthlyPaymentValueString = find(monthlyPaymentValue).getText(); // e.g. String="$1,073.64"
-		return monthlyPaymentValueString;
+		float monthlyPaymentValue = convertStringToFloat(monthlyPaymentValueString);
+
+		return monthlyPaymentValue;
 	}
 
-	public String getTotalPaymentsValue() {
+	public float getTotalPaymentsValue() {
 		// wait for the field to load the text value and then extract text
-		WebDriverWait wait = new WebDriverWait(driver, 20);
-		// set pattern and wait until digits appear in text field
-		Pattern pattern = Pattern.compile("\\d");
-		wait.until(ExpectedConditions.textMatches(totalPaymentsAndInterestValue, pattern));
+		waitForCalculation(totalPaymentsAndInterestValue);
+
 		// get total payments and interest text field
 		String totalPaymentsAndInterestValueString = find(totalPaymentsAndInterestValue).getText();
 		// split string and get first value (total payments)
 		String[] totalPaymentsAndInterestValueStringArray = totalPaymentsAndInterestValueString.split("(\\r\\n|\\r|\\n)");
 		// return first part of string array (total payments)
-		return totalPaymentsAndInterestValueStringArray[0];
+		String totalPaymentsString = totalPaymentsAndInterestValueStringArray[0];
+
+		// convert to float
+		float totalPaymentsFloat = convertStringToFloat(totalPaymentsString);
+
+		return totalPaymentsFloat;
 	}
 
-	public String getTotalInterestValue() {
+	public float getTotalInterestValue() {
 		// wait for the field to load the text value and then extract text
-		WebDriverWait wait = new WebDriverWait(driver, 20);
-		Pattern pattern = Pattern.compile("\\d"); // looking for any digits
-		wait.until(ExpectedConditions.textMatches(totalInterestValue, pattern)); // waits until string contains a digit
+		waitForCalculation(totalInterestValue);
+
+		// get string value
 		String totalInterestValueString = find(totalInterestValue).getText();
-		return totalInterestValueString;
+
+		// convert to float
+		float totalInterestValueFloat = convertStringToFloat(totalInterestValueString);
+		return totalInterestValueFloat;
 	}
 
 	// *NOT PART OF TEST EXERCISE*
