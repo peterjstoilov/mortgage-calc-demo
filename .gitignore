@@ -1,4 +1,7 @@
 target/
+.settings/
+.classpath
+.project
 debug.log
 pom.xml.tag
 pom.xml.releaseBackup
