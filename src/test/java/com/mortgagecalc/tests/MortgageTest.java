@@ -28,14 +28,14 @@ public class MortgageTest extends BaseTest {
 	private static Stream<Arguments> parameterProvider() {
 		return Stream.of(
 				Arguments.of(200000, "30", 5, "Annually", 1073.64f, 386513, 186513), // TC1
-				Arguments.of(200000, "30", 5, "Monthly", 1073.64f, 386513f, 186513f),
-				Arguments.of(250000000, "15", 7, "Annually", 2247070.68f, 404472721f, 154472721f),
-				Arguments.of(0, "40", 1, "Monthly", 0.00f, 0f, 0f),
-				Arguments.of(249999999, "1", 25, "Annually", 23761050.72f, 285132609f, 35132610f),
-				Arguments.of(1, "35", 0, "Monthly", 0.00f, 1f, 0f),
-				Arguments.of(123000000, "25", 0.001f, "Monthly", 410051.42f, 123015427f, 15427f),
-				Arguments.of(1500, "20", 24.999f, "Annually", 31.47f, 7563f, 6063f),
-				Arguments.of(50000, "15", 5.87f, "Monthly", 418.42f, 75317f, 25317f));
+				Arguments.of(200000, "30", 5, "Monthly", 1073.64f, 386513, 186513),
+				Arguments.of(250000000, "15", 7, "Annually", 2247070.68f, 404472721, 154472721),
+				Arguments.of(0, "40", 1, "Monthly", 0.00f, 0, 0),
+				Arguments.of(249999999, "1", 25, "Annually", 23761050.72f, 285132609, 35132610),
+				Arguments.of(1, "35", 0, "Monthly", 0.00f, 1, 0),
+				Arguments.of(123000000, "25", 0.001f, "Monthly", 410051.42f, 123015427, 15427),
+				Arguments.of(1500, "20", 24.999f, "Annually", 31.47f, 7563, 6063),
+				Arguments.of(50000, "15", 5.87f, "Monthly", 418.42f, 75317, 25317));
 	}
 
 	// @Test
