@@ -27,22 +27,22 @@ public class MortgageTest extends BaseTest {
 	// Set parameters for the test here:
 	private static Stream<Arguments> parameterProvider() {
 		return Stream.of(
-				Arguments.of(200000, "30", 5, "Annually", 1073.64f, 386513, 186513), // TC1
-				Arguments.of(200000, "30", 5, "Monthly", 1073.64f, 386513, 186513),
-				Arguments.of(250000000, "15", 7, "Annually", 2247070.68f, 404472721, 154472721),
-				Arguments.of(0, "40", 1, "Monthly", 0.00f, 0, 0),
-				Arguments.of(249999999, "1", 25, "Annually", 23761050.72f, 285132609, 35132610),
-				Arguments.of(1, "35", 0, "Monthly", 0.00f, 1, 0),
-				Arguments.of(123000000, "25", 0.001f, "Monthly", 410051.42f, 123015427, 15427),
-				Arguments.of(1500, "20", 24.999f, "Annually", 31.47f, 7563, 6063),
-				Arguments.of(50000, "15", 5.87f, "Monthly", 418.42f, 75317, 25317));
+				Arguments.of(200000, 30, 5, "Annually", 1073.64f, 386513, 186513), // TC1
+				Arguments.of(200000, 30, 5, "Monthly", 1073.64f, 386513, 186513),
+				Arguments.of(250000000, 15, 7, "Annually", 2247070.68f, 404472721, 154472721),
+				Arguments.of(0, 40, 1, "Monthly", 0.00f, 0, 0),
+				Arguments.of(249999999, 1, 25, "Annually", 23761050.72f, 285132609, 35132610),
+				Arguments.of(1, 35, 0, "Monthly", 0.00f, 1, 0),
+				Arguments.of(123000000, 25, 0.001f, "Monthly", 410051.42f, 123015427, 15427),
+				Arguments.of(1500, 20, 24.999f, "Annually", 31.47f, 7563, 6063),
+				Arguments.of(50000, 15, 5.87f, "Monthly", 418.42f, 75317, 25317));
 	}
 
 	// @Test
 	@DisplayName("Calculate Mortgage based on Loan Amount + Term in Years + Interest Rate")
 	@ParameterizedTest
 	@MethodSource("parameterProvider")
-	public void calculateMortgageLoanPayments(int loanAmount, String termInYears, float interestRate,
+	public void calculateMortgageLoanPayments(int loanAmount, int termInYears, float interestRate,
 			String reportAmortization, float monthlyPayment, float totalPayments, float totalInterest) {
 
 		// Pre-condition (not part of test assignment): close pop up message

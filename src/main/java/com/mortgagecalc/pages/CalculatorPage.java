@@ -38,8 +38,8 @@ public class CalculatorPage extends BasePage {
 		type(String.valueOf(loanAmmount), loanAmountField);
 	}
 
-	public void setTermInYearsSelect(String termInYears) {
-		selectByValue(termInYears, termInYearsSelect);
+	public void setTermInYearsSelect(int termInYears) {
+		selectByValue(String.valueOf(termInYears), termInYearsSelect);
 	}
 
 	public void setInterestRate(float interestRate) {
