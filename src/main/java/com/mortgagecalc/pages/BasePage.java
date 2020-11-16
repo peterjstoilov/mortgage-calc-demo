@@ -1,5 +1,6 @@
 package com.mortgagecalc.pages;
 
+import java.util.List;
 import java.util.regex.Pattern;
 
 import org.openqa.selenium.By;
@@ -23,6 +24,10 @@ public abstract class BasePage {
 
 	protected WebElement find(By locator) {
 		return driver.findElement(locator);
+	}
+
+	protected List<WebElement> findElements(By locator) {
+		return driver.findElements(locator);
 	}
 
 	// to enter data in an element we type in the string
