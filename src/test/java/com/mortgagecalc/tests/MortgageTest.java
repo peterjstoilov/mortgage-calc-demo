@@ -42,7 +42,7 @@ public class MortgageTest extends BaseTest {
 	@DisplayName("Calculate Mortgage based on Loan Amount + Term in Years + Interest Rate")
 	@ParameterizedTest
 	@MethodSource("parameterProvider")
-	public void calculateMortgageLoanPayments(int loanAmount, int termInYears, float interestRate,
+	public void testCalculateMortgageLoanPayments(int loanAmount, int termInYears, float interestRate,
 			String reportAmortization, float monthlyPayment, float totalPayments, float totalInterest) {
 
 		// Pre-condition (not part of test assignment): close pop up message
